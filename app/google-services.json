@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "102657831759",
+    "firebase_url": "https://picca-9eb13.firebaseio.com",
+    "project_id": "picca-9eb13",
+    "storage_bucket": "picca-9eb13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102657831759:android:72dc352553246301db4b3a",
+        "android_client_info": {
+          "package_name": "com.example.picca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102657831759-ci63h8nplqc5ber1s49erofgkeoq7h2t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.picca",
+            "certificate_hash": "aba13a3886503429fd21aab5221b3cc08ea481f9"
+          }
+        },
+        {
+          "client_id": "102657831759-lnpcqs8n0q1s3g0n7ha047m3faifhs4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCePiWgdG2xEmV51DU0CjXAB8-dcdoTLJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102657831759-lnpcqs8n0q1s3g0n7ha047m3faifhs4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

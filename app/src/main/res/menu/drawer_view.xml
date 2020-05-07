@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_first_fragment"
+        android:icon="@drawable/map"
+        android:title="Mapa restauracji"
+    />
+    <item
+        android:id="@+id/nav_second_fragment"
+        android:title="Dane użytkownika"
+        android:icon="@drawable/user_ic"/>
+    <item
+        android:id="@+id/nav_third_fragment"
+        android:title="Koszyk"
+        android:icon="@drawable/basket"
+        />
+
+    <item
+        android:id="@+id/nav_fourth_fragment"
+        android:title="Historia zamówień"
+        android:icon="@drawable/history2"/>
+
+    <item
+        android:id="@+id/nav_fifth_fragment"
+        android:title="Promocje i wydarzenia"
+        android:icon="@drawable/promo"
+        />
+</group>
+    </menu>

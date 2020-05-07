@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+                <ImageView
+                    android:id="@+id/list_pizza_item_status_type"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/list_pizza_item_name"
+                    android:src="@null"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/list_pizza_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
+                    tools:text="Nazwa Pizzy" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/list_pizza_item_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="Jakieś tam składniki" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp">
+
+                <Button
+                    android:id="@+id/cm28"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/ic_pizza_size"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="28cm"
+                    android:textColor="@color/yellow"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/list_pizza_item_28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/cm28"
+                    android:layout_alignBottom="@+id/cm28"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="right"
+                    android:text="20,00zł"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:ignore="MissingPrefix"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="5dp">
+
+                <Button
+                    android:id="@+id/cm34"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/ic_pizza_size"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="34cm"
+                    android:textColor="@color/yellow"
+                    android:textSize="8sp" />
+
+                <TextView
+
+                    android:id="@+id/list_pizza_item_34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/cm34"
+                    android:layout_alignBottom="@+id/cm34"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="right"
+                    android:text="25,00zł"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:ignore="MissingPrefix"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/cm44"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_pizza_size"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="44cm"
+                    android:textColor="@color/yellow"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/list_pizza_item_44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/cm44"
+                    android:layout_alignBottom="@+id/cm44"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="right"
+                    android:text="30,00zł"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:ignore="MissingPrefix"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/base_brown" />
+</LinearLayout>

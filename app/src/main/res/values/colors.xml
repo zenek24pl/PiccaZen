@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#039BE5</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#FFA000</color>
+
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="yellow">#dec324</color>
+
+
+    <!-- TopToast -->
+    <color name="error_background">#FAD3D8</color>
+    <item name="l_warning_red" type="color"></item>
+    <color name="success_background">#D9E9D8</color>
+    <color name="success_text">#002512</color>
+
+
+    <!-- Buttons -->
+    <color name="base_brown">#936744</color>
+    <color name="base_brown_opacity">#50936744</color>
+
+    <color name="bg_color_headr">#EBEBEC</color>
+    <!--TEMPORARY-->
+    <color name="gray_light">#999999</color>
+    <color name="base_blue">#0096FF</color>
+    <color name="wh">#e4e4e4</color>
+    <item name="blue" type="color"></item>
+    <item name="red" type="color"></item>
+    <item name="white" type="color"></item>
+    <item name="transparent_white" type="color"></item>
+    <item name="black" type="color"></item>
+    <item name="transparent" type="color"></item>
+    <color name="gray_border">#e4e4e4</color>
+    <item name="l_blue_text" type="color"></item>
+
+    <color name="transparent_80_black">#80000000</color>
+</resources>
