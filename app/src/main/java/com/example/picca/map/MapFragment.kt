@@ -316,7 +316,7 @@ class OwnIconRendered(
     override fun onBeforeClusterItemRendered(item: PizzaPlace?, markerOptions: MarkerOptions?) {
 var height = 100;
 var width = 100;
-var bitmapdraw = ContextCompat.getDrawable(context,R.drawable.ph)?.toBitmap(100,100);
+var bitmapdraw = ContextCompat.getDrawable(context,R.drawable.poi_rest)?.toBitmap(100,100);
         markerOptions?.icon(BitmapDescriptorFactory.fromBitmap(bitmapdraw))
 
         markerOptions?.snippet(item?.name);
