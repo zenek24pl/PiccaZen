@@ -11,12 +11,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picca.ActivityInteractions
+import com.example.picca.GlideApp
 import com.example.picca.R
 import com.example.picca.fragments.ExtrasDialog
 import com.example.picca.fragments.OrderFragment
 import com.example.picca.model.BasketItem
 import com.example.picca.model.Product
 import com.example.picca.sharedPref.UserUtils
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -26,8 +29,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 
-    class DishAdapter(val pizzaList: MutableList<Product>, val context: Context, val activityInteractions: ActivityInteractions) :
-        RecyclerView.Adapter<DishAdapter.ViewHolder>() {
+    class DishAdapter(val pizzaList: FirestoreRecyclerOptions<Product>, val context: Context, val activityInteractions: ActivityInteractions) :
+        FirestoreRecyclerAdapter<Product,DishAdapter.ViewHolder>(pizzaList) {
 
         var db = FirebaseFirestore.getInstance()
         var id:String?=null
@@ -44,20 +47,22 @@ import com.google.firebase.firestore.FirebaseFirestore
             )
         }
 
-        override fun getItemCount(): Int {
-            return pizzaList.size
-        }
 
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.pizzaName.setText(pizzaList[position].name)
-            holder.pizzaDescr.setText(pizzaList[position].descr)
-            holder.pizzaPrice.setText(pizzaList[position].price.toString())
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int,model: Product) {
+            holder.pizzaName.setText(model.name)
+            holder.pizzaDescr.setText(model.descr)
+            GlideApp.with(context).load(model.img)
+                .fitCenter()
+                .into(holder.pizzaImg)
+
+            holder.pizzaPrice.setText(model.price.toString())
             holder.add.setOnClickListener {
 
-                basketItem?.dishes?.add(pizzaList[position].id)
+                basketItem?.dishes?.add(model.id)
                 basketItem?.count="1";
                 basketItem?.id= id.toString()
-                basketItem?.price= pizzaList[position].price.toString()
+                basketItem?.price= model.price.toString()
 
 
 
@@ -105,6 +110,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
             }
         }
+
 
 
 

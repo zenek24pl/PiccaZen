@@ -26,5 +26,9 @@
         android:title="Promocje i wydarzenia"
         android:icon="@drawable/promo"
         />
+    <item
+        android:id="@+id/nav_sixth_fragment"
+        android:title="Wyloguj się"
+        android:icon="@drawable/promo"/>
 </group>
     </menu>

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.picca.BaseFragment
 import com.example.picca.R
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.pager_layout.*
 
 class PagerFragment : BaseFragment() {
@@ -34,9 +35,21 @@ class PagerFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val fragmentAdapter = fragmentManager?.let { MyPagerAdapter(it) }
+        val fragmentAdapter = childFragmentManager.let { MyPagerAdapter(it) }
         viewPager.adapter = fragmentAdapter
         tabLayout.setupWithViewPager(viewPager)
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+            }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
+
+            override fun onTabSelected(p0: TabLayout.Tab?) {
+viewPager.currentItem==p0?.position
+            }
+
+        })
         actions?.topBar()?.showTopBar(true)
         actions?.topBar()?.setTitle(arguments?.getString(NAME))
     }

@@ -1,7 +1,10 @@
 package com.example.picca.model
 
+import com.google.firebase.firestore.DocumentId
+
 class Pizza {
     var descr: String = ""
+    @DocumentId
     var id:String=""
     var name:String=""
     var count:Int=0

@@ -7,4 +7,5 @@ class Product {
     var count:Int=0
     var ingredients:ArrayList<String> = arrayListOf()
     var price:String=""
+    var img:String=""
 }

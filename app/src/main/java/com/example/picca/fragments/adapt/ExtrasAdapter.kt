@@ -8,11 +8,15 @@ import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picca.ActivityInteractions
 import com.example.picca.R
+import com.example.picca.model.BasketItem
 import com.example.picca.model.Ingredients
 import com.example.picca.model.Pizza
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class ExtrasAdapter(val ingredients: MutableList<Ingredients>, val context: Context, val activityInteractions: ActivityInteractions,val pizza:Pizza) :
-    RecyclerView.Adapter<ExtrasAdapter.ExtrasViewHolder>() {
+class ExtrasAdapter(val ingredients: FirestoreRecyclerOptions<Ingredients>, val context: Context, val activityInteractions: ActivityInteractions, val pizza:Pizza) :
+FirestoreRecyclerAdapter<Ingredients, ExtrasAdapter.ExtrasViewHolder>(ingredients)
+{
    var ingList:ArrayList<String> = arrayListOf()
 
 
@@ -25,14 +29,12 @@ class ExtrasAdapter(val ingredients: MutableList<Ingredients>, val context: Cont
         )
         }
 
-    override fun getItemCount(): Int {
-        return ingredients.size
-    }
 
-    override fun onBindViewHolder(holder: ExtrasViewHolder, position: Int) {
-        holder.checkBox.text = ingredients[position].name
+
+    override fun onBindViewHolder(holder: ExtrasViewHolder, position: Int,model:Ingredients) {
+        holder.checkBox.text = model.name
         pizza.ingr.forEach {
-            if (it==ingredients[position].id){
+            if (it==model.id){
                 holder.checkBox.isChecked=true
             }
         }

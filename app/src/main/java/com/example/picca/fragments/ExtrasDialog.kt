@@ -10,15 +10,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picca.BaseFragment
 import com.example.picca.R
+import com.example.picca.fragments.adapt.BasketAdapter
 import com.example.picca.fragments.adapt.ExtrasAdapter
 import com.example.picca.model.*
 import com.example.picca.sharedPref.UserUtils
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.dodatki_layout.*
+import kotlinx.android.synthetic.main.fr_basket.*
 
 class ExtrasDialog: BaseFragment() {
 
@@ -29,6 +33,9 @@ class ExtrasDialog: BaseFragment() {
     var basketItem:BasketItem= BasketItem()
     var p:Pizza= Pizza()
     var id:String?=""
+    var adapter:ExtrasAdapter?=null
+
+
     companion object{
         const val ID:String = "ID"
         fun newInstance(id: String): ExtrasDialog? {
@@ -58,6 +65,11 @@ class ExtrasDialog: BaseFragment() {
             id= UserUtils(it).getUserID()
 
         }
+
+        onClicksEtc()
+        setUpRecyclerView()
+    }
+    private fun setUpRecyclerView() {
         db.collection("pizza").document(arguments?.getString(ID).toString())
             .get()
             .addOnSuccessListener {
@@ -69,38 +81,18 @@ class ExtrasDialog: BaseFragment() {
             }
 
 
+        val query: Query = db.collection("ingr")
+
+        val options = FirestoreRecyclerOptions.Builder<Ingredients>()
+            .setQuery(query, Ingredients::class.java)
+            .build()
+        adapter= context?.let { actions?.let { it1 -> ExtrasAdapter(options, it, it1,p) } }
 
 
-        db.collection("ingr")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    var ingrrr=Ingredients()
-                    ingrrr=document.toObject(Ingredients::class.java)
-                    ingrrr.id=document.id
+        ingr_rv.layoutManager = GridLayoutManager(context, 3,RecyclerView.VERTICAL, false)
+        ingr_rv.adapter = adapter
 
-                    ingredients.add(ingrrr)
-                    Log.d("OK", "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("NieOK", "Error getting documents: ", exception)
-            }
-            .addOnCompleteListener{
-                ingr_rv.layoutManager= GridLayoutManager(context, 3,RecyclerView.VERTICAL, false)
-                ingr_rv.adapter=
-                    actions?.let { it1 ->
-                        activity?.applicationContext?.let { it2 ->
-                            ExtrasAdapter(
-                                ingredients, it2,
-                                it1,p
-                            )
-                        }
-                    }
-            }
-        onClicksEtc()
     }
-
     private fun onClicksEtc() {
 
         radioGr_size.setOnCheckedChangeListener { group, checkedId ->
@@ -242,5 +234,15 @@ class ExtrasDialog: BaseFragment() {
             ostry=false
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter?.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter?.stopListening()
     }
 }

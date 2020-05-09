@@ -158,9 +158,16 @@ class OrderFragment: BaseFragment() {
 
         })
         bt_orderAll.setOnClickListener {
+            if(adress==null && user_street.text.isNullOrEmpty() ||
+                    user_number.text.isNullOrEmpty() ||
+                    user_postcode.text.isNullOrEmpty() ||
+                    user_phone.text.isNullOrEmpty()
+                        ){
+                    Toast.makeText(context,"Uzupełnij adres w celu zfinalizowania zamówienia",Toast.LENGTH_SHORT).show()
 
-            if(adress?.street.isNullOrEmpty() || adress?.hauseNumber.isNullOrEmpty() ||
-                        adress?.phone.isNullOrEmpty() || adress?.postCode.isNullOrEmpty()
+            }
+            else if(adress !=null && (adress?.street.isNullOrEmpty() || adress?.hauseNumber.isNullOrEmpty() ||
+                        adress?.phone.isNullOrEmpty() || adress?.postCode.isNullOrEmpty())
             ){
                 Toast.makeText(context,"Uzupełnij adres w celu zfinalizowania zamówienia",Toast.LENGTH_SHORT).show()
 
@@ -263,10 +270,7 @@ class OrderFragment: BaseFragment() {
     }
 
     fun onBuyPressed() { // PAYMENT_INTENT_SALE will cause the payment to complete immediately.
-// Change PAYMENT_INTENT_SALE to
-//   - PAYMENT_INTENT_AUTHORIZE to only authorize payment and capture funds later.
-//   - PAYMENT_INTENT_ORDER to create a payment for authorization and capture
-//     later via calls from your server.
+
         val payment = PayPalPayment(
             BigDecimal("1.75"), "USD", "hipster jeans",
             PayPalPayment.PAYMENT_INTENT_SALE
@@ -291,8 +295,7 @@ class OrderFragment: BaseFragment() {
                 try {
                     Log.i("paymentExample", confirm.toJSONObject().toString(4))
                     // TODO: send 'confirm' to your server for verification.
-// see https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
-// for more details.
+                    Toast.makeText(context,"Platnosc za spodnie przeszla prawidłowo :D gz",Toast.LENGTH_SHORT).show()
                 } catch (e: JSONException) {
                     Log.e("paymentExample", "an extremely unlikely failure occurred: ", e)
                 }

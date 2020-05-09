@@ -1,7 +1,6 @@
 package com.example.picca.fragments.adapt
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.picca.ActivityInteractions
 import com.example.picca.R
 import com.example.picca.fragments.ExtrasDialog
-import com.example.picca.fragments.OrderFragment
 import com.example.picca.model.Pizza
-import com.example.picca.sharedPref.UserUtils
-import com.google.firebase.firestore.FieldValue
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 
-class PizzaMenuAdapter(val pizzaList: MutableList<Pizza>,val context: Context,val activityInteractions: ActivityInteractions) :
-    RecyclerView.Adapter<PizzaMenuAdapter.ViewHolder>() {
+
+class PizzaMenuAdapter(val pizzaList: FirestoreRecyclerOptions<Pizza>, val context: Context, val activityInteractions: ActivityInteractions) :
+    FirestoreRecyclerAdapter<Pizza, PizzaMenuAdapter.ViewHolder>(pizzaList) {
 
     var db = FirebaseFirestore.getInstance()
 
@@ -31,18 +31,23 @@ class PizzaMenuAdapter(val pizzaList: MutableList<Pizza>,val context: Context,va
             rootView
         )
     }
-
-    override fun getItemCount(): Int {
-     return pizzaList.size
+    override fun onDataChanged() { // Called each time there is a new query snapshot. You may want to use this method
+// to hide a loading spinner or check for the "no documents" state and update your UI.
+// ...
+        System.out.println("DD")
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.pizzaName.setText(pizzaList[position].name)
-        holder.pizzaDescr.setText(pizzaList[position].descr)
-        holder.pizzaPrice.setText(pizzaList[position].price.toString())
+    override fun onError(e: FirebaseFirestoreException) {
+        super.onError(e)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, model:Pizza) {
+        holder.pizzaName.setText(model.name)
+        holder.pizzaDescr.setText(model.descr)
+        holder.pizzaPrice.setText(model.price.toString())
 
         holder.add.setOnClickListener {
-        activityInteractions.navigateTo(  ExtrasDialog.newInstance(pizzaList[position].id),true)
+        activityInteractions.navigateTo(  ExtrasDialog.newInstance(model.id),true)
         }
 
 

@@ -6,38 +6,26 @@
     android:layout_height="150dp"
     android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/buy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/add"
-        tools:text="Kup teraz" />
-
     <Button
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:text="Dodaj do koszyka"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgPizza" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imgPizza"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/log" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvName"
@@ -46,7 +34,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="PizzaName"
-        app:layout_constraintStart_toEndOf="@+id/imgPizza"
+        android:textSize="18sp"
+
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -55,7 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="pizzaDescription"
+        app:layout_constraintBottom_toTopOf="@+id/add"
+        app:layout_constraintEnd_toStartOf="@+id/cena_desc"
         app:layout_constraintStart_toEndOf="@+id/imgPizza"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -63,9 +57,11 @@
         android:id="@+id/cena_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cena"
-        app:layout_constraintBottom_toTopOf="@+id/buy"
-        app:layout_constraintEnd_toEndOf="@+id/buy"
+        android:layout_marginEnd="16dp"
+        android:text="Cena za średnią"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/add"
+        app:layout_constraintEnd_toEndOf="@+id/add"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -73,7 +69,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="22"
-        app:layout_constraintEnd_toEndOf="@+id/buy"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/add"
         app:layout_constraintTop_toBottomOf="@+id/cena_desc" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@color/base_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

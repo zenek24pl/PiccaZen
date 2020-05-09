@@ -58,7 +58,6 @@ class MainActivity : BaseActivity(), View.OnClickListener, ActivityInteractions,
         setContentView(R.layout.activity_main)
 
 
-
         // Buttons
         emailSignInButton.setOnClickListener(this)
         emailCreateAccountButton.setOnClickListener(this)
@@ -157,22 +156,21 @@ class MainActivity : BaseActivity(), View.OnClickListener, ActivityInteractions,
             }
              R.id.nav_second_fragment-> {
                  navigateTo(UserDataFragment.newInstance(),true)
-
              }
              R.id.nav_third_fragment-> {
                  navigateTo(BasketFragment.newInstance(),true)
-
              }
             R.id.nav_fourth_fragment-> {
                 navigateTo(OrderHistory.newInstance(),true)
-
             }
 
             R.id.nav_fifth_fragment-> {
                 navigateTo(EventFragment.newInstance(),true)
-
             }
-
+            R.id.nav_sixth_fragment-> {
+                //ADD LOGOUT HERE
+              //  navigateTo(EventFragment.newInstance(),true)
+            }
         }
 
         // Highlight the selected item has been done by NavigationView
@@ -212,9 +210,6 @@ class MainActivity : BaseActivity(), View.OnClickListener, ActivityInteractions,
 
         activity_main_drawer_layout.addDrawerListener(this)
         if(UserUtils(applicationContext).isLogged()){
-
-
-
             var us:User?=User()
 
             UserUtils(applicationContext).getUserID()?.let {
@@ -228,8 +223,6 @@ class MainActivity : BaseActivity(), View.OnClickListener, ActivityInteractions,
                         }else{
                             updateUI(null,null)
                         }
-
-
 
                     }.addOnFailureListener{
                         Log.d(TAG, "get failed with ", it)

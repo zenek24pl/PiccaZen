@@ -14,16 +14,18 @@ import com.example.picca.R
 import com.example.picca.model.BasketItem
 import com.example.picca.model.Pizza
 import com.example.picca.model.Product
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
 
 class BasketAdapter(
-    val pizzaList: MutableList<BasketItem>,
+    val pizzaList: FirestoreRecyclerOptions<BasketItem>,
     val context: Context,
     val activityInteractions: ActivityInteractions
 ) :
-    RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
+    FirestoreRecyclerAdapter<BasketItem, BasketAdapter.ViewHolder>(pizzaList){
 
     var db = FirebaseFirestore.getInstance()
     var pizza: Pizza? = null
@@ -37,10 +39,6 @@ class BasketAdapter(
         return ViewHolder(
             rootView
         )
-    }
-
-    override fun getItemCount(): Int {
-        return pizzaList.size
     }
 
     fun getPizzaData(
@@ -82,22 +80,22 @@ class BasketAdapter(
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int,model:BasketItem) {
 
 
-        var data = pizzaList[position]
+        var data = model
 
         if (!data.pizza.isNullOrEmpty()) {
             getPizzaData(data.pizza.first(),holder)
 
-            holder.pizzaDescr.setText("sos " + pizzaList[position].souce + " ciasto " + data.plate + " rozmiar " + data.pizzaSize)
+            holder.pizzaDescr.setText("sos " + model.souce + " ciasto " + data.plate + " rozmiar " + data.pizzaSize)
         } else {
             getDishData(data.dishes.first(),holder)
 
 
             holder.pizzaDescr.setText(product?.name)
         }
-        holder.pizzaPrice.setText(pizzaList[position].price.toString())
+        holder.pizzaPrice.setText(model.price.toString())
         holder.count.text = data.count
         holder.delete.setOnClickListener {
             if( data.count.isEmpty() ||data.count.toInt()==1 ){
@@ -106,7 +104,8 @@ class BasketAdapter(
                     .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                     .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
                 onBasketAction?.onDelete(data)
-                pizzaList.remove(data)
+
+                    //pizzaList.remove(data)
             }else{
                 var count=
                     (data.count.toInt()-1)

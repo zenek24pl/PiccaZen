@@ -5,6 +5,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_dish"
         android:layout_width="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
