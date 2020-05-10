@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:inputType="text"
 
-                tools:text="Dupa dupa" />
+                />
 
 
         </LinearLayout>
