@@ -130,13 +130,17 @@ class MainActivity : BaseActivity(), View.OnClickListener, ActivityInteractions,
             activity_main_drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
         }
     }
+
     override fun changeDrawerMenuState() {
-        if (isDrawerMenuOpen) {
+        if (isDrawerOpen()) {
             activity_main_drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             activity_main_drawer_layout.openDrawer(GravityCompat.START)
         }
     }
+
+    private fun isDrawerOpen() = activity_main_drawer_layout.isDrawerOpen(GravityCompat.START)
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
              android.R.id.home-> {
