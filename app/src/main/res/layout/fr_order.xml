@@ -31,7 +31,8 @@
           android:layout_height="wrap_content"
           android:layout_marginStart="16dp"
           android:layout_marginTop="32dp"
-          android:text="Email uzytkownika"
+          android:text="Email użytkownika:"
+          android:textStyle="bold"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +43,8 @@
           android:layout_height="wrap_content"
           android:layout_marginStart="16dp"
           android:layout_marginTop="34dp"
-          android:text="Adress:"
+          android:text="Adres dostawy:"
+          android:textStyle="bold"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tvname" />
 
@@ -70,7 +72,7 @@
                   android:layout_marginTop="16dp"
                   android:layout_weight="1"
                   android:text="Ulica:"
-                  />
+                  android:textStyle="bold" />
 
               <EditText
                   android:id="@+id/user_street"
@@ -79,7 +81,7 @@
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
                   android:layout_weight="1"
-                  />
+                  android:textSize="14sp" />
           </LinearLayout>
       </RelativeLayout>
 
@@ -106,7 +108,8 @@
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
                   android:layout_weight="1"
-                  android:text="Numer mieszkania:" />
+                  android:text="Numer mieszkania:"
+                  android:textStyle="bold" />
 
               <EditText
                   android:id="@+id/user_number"
@@ -114,7 +117,8 @@
                   android:layout_height="wrap_content"
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
-                  android:layout_weight="1" />
+                  android:layout_weight="1"
+                  android:textSize="14sp" />
           </LinearLayout>
       </RelativeLayout>
 
@@ -141,7 +145,8 @@
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
                   android:layout_weight="1"
-                  android:text="Kod pocztowy:" />
+                  android:text="Kod pocztowy:"
+                  android:textStyle="bold" />
 
               <EditText
                   android:id="@+id/user_postcode"
@@ -149,7 +154,8 @@
                   android:layout_height="wrap_content"
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
-                  android:layout_weight="1" />
+                  android:layout_weight="1"
+                  android:textSize="14sp" />
           </LinearLayout>
       </RelativeLayout>
 
@@ -174,19 +180,19 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginStart="16dp"
-                  android:layout_weight="1"
                   android:layout_marginTop="16dp"
+                  android:layout_weight="1"
                   android:text="Telefon:"
-                  />
+                  android:textStyle="bold" />
 
               <EditText
                   android:id="@+id/user_phone"
-                  android:layout_weight="1"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginStart="16dp"
                   android:layout_marginTop="16dp"
-                  />
+                  android:layout_weight="1"
+                  android:textSize="14sp" />
           </LinearLayout>
       </RelativeLayout>
 
@@ -196,31 +202,38 @@
 
 
     <TextView
+        android:id="@+id/kupon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/kupon"
-        android:text="Rabaty"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:text="Rabaty:"
 
+        android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_data"
-        />
+        tools:visibility="visible" />
+
     <EditText
+        android:id="@+id/kupon_val"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/kupon_val"
-        android:text="Podaj kod lub liczbę punktów które chesz użyć"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:text="Podaj kod lub liczbę punktów które chesz użyć"
 
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kupon"
-        />
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/cenaaa"
@@ -228,7 +241,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Rabat"
+        android:text="Rabat:"
+        android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kupon_val" />
 
@@ -248,7 +263,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Cena po rabacie"
+        android:text="Cena po rabacie:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cenaaa" />
 
@@ -267,7 +283,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rachunek">
 
