@@ -19,13 +19,15 @@
         android:id="@+id/imgPizza"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescr"
+        app:srcCompat="@drawable/pizza_menu" />
 
     <TextView
         android:id="@+id/tvName"
@@ -46,23 +48,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="pizzaDescription"
-        app:layout_constraintBottom_toTopOf="@+id/add"
-        app:layout_constraintEnd_toStartOf="@+id/cena_desc"
-        app:layout_constraintStart_toEndOf="@+id/imgPizza"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/cena_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:text="Cena za średnią"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintEnd_toEndOf="@+id/add"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imgPizza"
+        app:layout_constraintTop_toTopOf="@+id/imgPizza" />
 
     <TextView
         android:id="@+id/price_m"
@@ -72,7 +73,9 @@
         android:layout_marginEnd="16dp"
         android:text="22"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintEnd_toEndOf="@+id/add"
+        app:layout_constraintStart_toEndOf="@+id/imgPizza"
         app:layout_constraintTop_toBottomOf="@+id/cena_desc" />
 
     <FrameLayout
