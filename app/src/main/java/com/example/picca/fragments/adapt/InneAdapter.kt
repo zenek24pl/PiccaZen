@@ -52,7 +52,7 @@ class InneAdapter(val pizzaList: FirestoreRecyclerOptions<Product>, val context:
     override fun onBindViewHolder(holder: ViewHolder, position: Int,model:Product) {
         holder.pizzaName.setText(model.name)
         holder.pizzaDescr.setText(model.descr)
-        holder.pizzaPrice.setText(model.price.toString())
+        holder.pizzaPrice.setText(model.price.toString() + " zł")
         GlideApp.with(context).load(model.img)
             .fitCenter()
             .into(holder.pizzaImg)

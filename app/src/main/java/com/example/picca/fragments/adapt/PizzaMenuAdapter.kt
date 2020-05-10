@@ -44,7 +44,7 @@ class PizzaMenuAdapter(val pizzaList: FirestoreRecyclerOptions<Pizza>, val conte
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model:Pizza) {
         holder.pizzaName.setText(model.name)
         holder.pizzaDescr.setText(model.descr)
-        holder.pizzaPrice.setText(model.price.toString())
+        holder.pizzaPrice.setText(model.price.toString() + " zł")
 
         holder.add.setOnClickListener {
         activityInteractions.navigateTo(  ExtrasDialog.newInstance(model.id),true)

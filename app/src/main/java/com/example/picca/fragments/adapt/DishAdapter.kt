@@ -56,7 +56,7 @@ import com.google.firebase.firestore.FirebaseFirestore
                 .fitCenter()
                 .into(holder.pizzaImg)
 
-            holder.pizzaPrice.setText(model.price.toString())
+            holder.pizzaPrice.setText(model.price.toString() + " zł")
             holder.add.setOnClickListener {
 
                 basketItem?.dishes?.add(model.id)
