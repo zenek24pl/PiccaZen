@@ -8,7 +8,7 @@
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
     <color name="yellow">#dec324</color>
-
+    <color name="light_orange">#FFCC31</color>
 
     <!-- TopToast -->
     <color name="error_background">#FAD3D8</color>

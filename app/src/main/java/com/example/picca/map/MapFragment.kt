@@ -7,9 +7,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.BaseColumns
 import android.util.Log
@@ -20,21 +17,13 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.cursoradapter.widget.CursorAdapter
 import androidx.cursoradapter.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
 import androidx.cursoradapter.widget.SimpleCursorAdapter
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.example.picca.ActivityInteractions
 import com.example.picca.BaseFragment
-import com.example.picca.GlideApp
 import com.example.picca.R
 import com.example.picca.fragments.PagerFragment
 import com.example.picca.model.PizzaPlace
@@ -44,20 +33,17 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.maps.android.clustering.Cluster
 import com.google.maps.android.clustering.ClusterManager
-import com.google.maps.android.clustering.view.ClusterRenderer
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import kotlinx.android.synthetic.main.info_window_map.view.*
 import kotlinx.android.synthetic.main.map_lay.*
-import java.security.Permission
 
 
 class MapFragment :
     BaseFragment(),
     OnMapReadyCallback {
 
-    val SYDNEY = com.google.android.gms.maps.model.LatLng(-33.862, 151.21)
+    val POLAND_LAT_LNG = LatLng(51.759465, 19.457760)
     val ZOOM_LEVEL = 13f
     var googleMap: GoogleMap? = null
     val TAG_CODE_PERMISSION_LOCATION = 0
@@ -121,10 +107,9 @@ class MapFragment :
             googleMap.getUiSettings().setTiltGesturesEnabled(true);
             googleMap.getUiSettings().setCompassEnabled(false);
             googleMap.setBuildingsEnabled(true);
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(POLAND_LAT_LNG, 6f))
             getMarkersData()
             setSearchEn()
-
-
         }
     }
 
@@ -316,7 +301,7 @@ class OwnIconRendered(
     override fun onBeforeClusterItemRendered(item: PizzaPlace?, markerOptions: MarkerOptions?) {
 var height = 100;
 var width = 100;
-var bitmapdraw = ContextCompat.getDrawable(context,R.drawable.ph)?.toBitmap(100,100);
+var bitmapdraw = ContextCompat.getDrawable(context,R.drawable.poi_rest)?.toBitmap(100,100);
         markerOptions?.icon(BitmapDescriptorFactory.fromBitmap(bitmapdraw))
 
         markerOptions?.snippet(item?.name);

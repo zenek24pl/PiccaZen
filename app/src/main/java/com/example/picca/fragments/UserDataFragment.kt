@@ -110,7 +110,7 @@ companion object {
                 }
             }
 
-
+            user_popup.text = "OK!"
 
         }
 

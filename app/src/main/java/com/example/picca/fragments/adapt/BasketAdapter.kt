@@ -95,7 +95,7 @@ class BasketAdapter(
 
             holder.pizzaDescr.setText(product?.name)
         }
-        holder.pizzaPrice.setText(model.price.toString())
+        holder.pizzaPrice.setText(model.price.toString() + " zł")
         holder.count.text = data.count
         holder.delete.setOnClickListener {
             if( data.count.isEmpty() ||data.count.toInt()==1 ){

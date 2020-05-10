@@ -19,18 +19,20 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
             <TextView
                 android:id="@+id/tvname"
-                android:layout_width="match_parent"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_weight="1"
-                android:text="Email uzytkownika"
+                android:text="@string/hint_email"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +46,7 @@
                 android:layout_weight="1"
                 android:inputType="text"
 
-                tools:text="Dupa dupa" />
+                />
 
 
         </LinearLayout>
@@ -68,7 +70,7 @@
 
             <TextView
                 android:id="@+id/tvPass"
-                android:layout_width="wrap_content"
+                android:layout_width="101dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -79,7 +81,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/user_pass"
-                android:layout_width="wrap_content"
+                android:layout_width="247dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -93,14 +95,27 @@
         android:id="@+id/tvAdress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
-        android:textSize="18sp"
-        android:text="Adres:"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
+        android:text="Adres:"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/PasswordFields"
         app:layout_constraintTop_toTopOf="@id/PasswordFields" />
+
+    <TextView
+        android:id="@+id/tvAdress2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Dane logowania:"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
         android:id="@+id/addressFields"
@@ -125,8 +140,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="Ulica:"
-                />
+                android:text="Ulica:" />
 
             <EditText
                 android:id="@+id/user_street"
@@ -134,8 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
- />
+                android:layout_weight="1" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -230,19 +243,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
-                android:text="Telefon:"
-             />
+                android:layout_weight="1"
+                android:text="Telefon:" />
 
             <EditText
                 android:id="@+id/user_phone"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-              />
+                android:layout_weight="1" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -269,23 +280,22 @@
         app:layout_constraintTop_toBottomOf="@+id/user_points" />
 
     <TextView
-        android:id="@+id/tvPoints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="Punkty rabatowe użytkownika"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneFields" />
-
-    <TextView
         android:id="@+id/tv_points_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/user_points"
+        app:layout_constraintTop_toBottomOf="@+id/phoneFields"
+        tools:layout_editor_absoluteX="206dp" />
+
+    <TextView
+        android:id="@+id/user_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPoints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 </androidx.constraintlayout.widget.ConstraintLayout>
